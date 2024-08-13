@@ -6,6 +6,8 @@ server:
 spring:
   application:
     name: PAYMENT-SERVICE
+  config:
+    import: "configserver:http://localhost:8888"
 management:
   endpoints:
     web:

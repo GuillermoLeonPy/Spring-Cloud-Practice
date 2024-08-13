@@ -1,0 +1,11 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /properties
+
+
+spring:
+  config:
+    import: "configserver:http://localhost:8888"
+  application:
+    name: Config server client

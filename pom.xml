@@ -17,6 +17,8 @@
         <module>Notification-API</module>
         <module>Payment-API</module>
         <module>Dto-module</module>
+        <module>Config-Server</module>
+        <module>Config-Server-Client</module>
     </modules>
 
     <properties>
