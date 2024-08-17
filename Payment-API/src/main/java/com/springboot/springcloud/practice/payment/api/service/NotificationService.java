@@ -22,8 +22,8 @@ public class NotificationService {
         logger.info("Notification Service::notificate method");
         return restTemplate.postForObject("http://NOTIFICATION-SERVICE/notification-api/notification/notificate",
                 NotificationRequest.builder()
-                        .notificationId("112233")
-                        .transactionId("123")
+                        .notificationId("FROM-PAYMENT-API")
+                        .transactionId("FROM-PAYMENT-API")
                         .notificationType("email")
                         .notificationSubject("XXX service payment")
                         .notificationBody("Dear customer...")
@@ -35,7 +35,8 @@ public class NotificationService {
     public NotificationResponse getFallBackNotificateResponse(Throwable throwable){
         logger.info("notificate-circuit-breaker fallback method; return notification in processing status");
         return NotificationResponse.builder()
-                .notificationStatus("PROCESSING")
+                .notificationId("FALLBACK")
+                .notificationStatus("PROCESSING-FALLBACK")
                 .build();
     }
 }

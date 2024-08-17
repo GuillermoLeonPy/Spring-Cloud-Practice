@@ -6,8 +6,9 @@ server:
 spring:
   application:
     name: PAYMENT-SERVICE
-  config:
-    import: "configserver:http://localhost:8888"
+  profiles:
+    default: local
+
 management:
   endpoints:
     web:
@@ -33,3 +34,16 @@ resilience4j:
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${eureka-host}:8761/eureka
+
+
+
+

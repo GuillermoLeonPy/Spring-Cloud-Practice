@@ -1,0 +1,4 @@
+eureka-host: eureka-server
+spring:
+  config:
+    import: "configserver:http://config-server:8888"

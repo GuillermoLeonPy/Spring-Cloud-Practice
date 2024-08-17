@@ -15,6 +15,8 @@
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker.image.name>config-server</docker.image.name>
+        <docker.image.version>1.0-snapshot</docker.image.version>
     </properties>
 
     <dependencies>
@@ -25,6 +27,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -47,6 +53,22 @@
                 <configuration>
                     <mainClass>com.springboot.springcloud.practice.config.server.application.Application</mainClass>
                     <arguments>A B C</arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.springboot.springcloud.practice.config.server.application.Application</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.13</version>
+                <configuration>
+                    <repository>${docker.image.name}</repository>
+                    <tag>${docker.image.version}</tag>
                 </configuration>
             </plugin>
         </plugins>
