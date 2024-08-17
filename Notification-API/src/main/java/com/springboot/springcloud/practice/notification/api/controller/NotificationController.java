@@ -12,6 +12,9 @@ public class NotificationController {
 
     private final Logger logger = LoggerFactory.getLogger(NotificationController.class);
 
+    private static final int NOTIFICATE_SLEEP_TIME_IN_MILLIS = 2500;
+
+
     @GetMapping(path = "/ping")
     public String ping(){
         return "pong";
@@ -19,7 +22,8 @@ public class NotificationController {
 
     @PostMapping(path = "/notificate")
     public NotificationResponse notificate(@RequestBody(required = true) NotificationRequest notificationRequest){
-        doSleep(5000);
+        logger.info("notificate sleeping for " + NOTIFICATE_SLEEP_TIME_IN_MILLIS + " milliseconds");
+        doSleep(NOTIFICATE_SLEEP_TIME_IN_MILLIS);
         logger.info("notification request: " + notificationRequest);
         return NotificationResponse.builder()
                 .notificationId(notificationRequest.getNotificationId())
