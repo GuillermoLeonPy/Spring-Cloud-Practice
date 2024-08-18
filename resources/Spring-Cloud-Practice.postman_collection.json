@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "40bc077e-38dd-42b8-88c0-ea8b64fbfda7",
+		"name": "Spring-Cloud-Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7813871"
+	},
+	"item": [
+		{
+			"name": "Payment-API",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/payment-api/payment/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"payment-api",
+								"payment",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "doPayment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionId\":\"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/payment-api/payment/doPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"payment-api",
+								"payment",
+								"doPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insuranceProviderUrl",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/payment-api/payment/insuranceProviderUrl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"payment-api",
+								"payment",
+								"insuranceProviderUrl"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification-API",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notification-api/notification/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notification-api",
+								"notification",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notificate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"notificationId\":\"445566\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/notification-api/notification/notificate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notification-api",
+								"notification",
+								"notificate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
