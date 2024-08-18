@@ -37,8 +37,20 @@ services:
     image: payment-api:1.0-snapshot
     ports:
       - 8082:8082
+    healthcheck:
+      test: "curl --fail --silent localhost:8082/payment-api/actuator/health/readiness | grep UP || exit 1"
+      interval: 2s
+      timeout: 3s
+      retries: 5
+      start_period: 2s
     depends_on:
       eureka-server:
         condition: service_healthy
 
-
+  gateway:
+    image: gateway:1.0-snapshot
+    ports:
+      - 9090:9090
+    depends_on:
+      payment-api:
+        condition: service_healthy

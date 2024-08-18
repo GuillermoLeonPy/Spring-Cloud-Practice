@@ -18,8 +18,14 @@ management:
   endpoint:
     health:
       show-details: always
+      probes:
+        enabled: true
   health:
     circuitbreakers:
+      enabled: true
+    readiness-state:
+      enabled: true
+    liveness-state:
       enabled: true
 
 resilience4j:

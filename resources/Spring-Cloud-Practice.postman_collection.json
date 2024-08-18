@@ -138,6 +138,62 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "doPayment payment-api",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionId\":\"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/payment-api/payment/doPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"payment-api",
+								"payment",
+								"doPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ping payment-api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/notification-api/notification/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"notification-api",
+								"notification",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
