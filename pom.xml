@@ -19,6 +19,7 @@
         <module>Dto-module</module>
         <module>Config-Server</module>
         <module>Config-Server-Client</module>
+        <module>Gateway</module>
     </modules>
 
     <properties>
