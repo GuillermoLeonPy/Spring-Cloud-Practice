@@ -1,0 +1,9 @@
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server-0.eureka-svc:8761/eureka,http://eureka-server-1.eureka-svc:8761/eureka
+#http://eureka-server-0.eureka-svc.spring-cloud-microservices.svc.cluster.local:EUREKA-SERVER:8761/eureka,http://eureka-server-1.eureka-svc.spring-cloud-microservices.svc.cluster.local:EUREKA-SERVER:8761/eureka

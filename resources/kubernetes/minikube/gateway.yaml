@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: spring-cloud-microservices
+  labels:
+    app: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+      - name: gateway
+        image: guillermoleonpy/gateway:1.1-snapshot
+        ports:
+        - containerPort: 9090
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: container-registry-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-svc
+  namespace: spring-cloud-microservices
+spec:
+  type: LoadBalancer
+  selector:
+    app: gateway
+  ports:
+  - port: 80
+    targetPort: 9090
+    protocol: TCP
+

@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eureka-config-map
+  namespace: spring-cloud-microservices
+data:
+  eureka_server_address: http://eureka-server-0.eureka-svc:8761/eureka,http://eureka-server-1.eureka-svc:8761/eureka
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-svc
+  namespace: spring-cloud-microservices
+  labels:
+    app: eureka-svc
+spec:
+  clusterIP: None
+  selector:
+    app: eureka-server
+  ports:
+  - port: 8761
+    name: eureka-svc
+
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: eureka-server
+  namespace: spring-cloud-microservices
+spec:
+  selector:
+    matchLabels:
+      app: eureka-server
+  serviceName: 'eureka-svc'
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+      - name: eureka-server
+        image: guillermoleonpy/eureka-server:1.1-snapshot
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8761
+        env:
+          - name: EUREKA_SERVER_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                name: eureka-config-map
+                key: eureka_server_address
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-node-port-svc
+  namespace: spring-cloud-microservices
+  labels:
+    app: eureka-node-port-svc
+spec:
+  type: NodePort
+  selector:
+    app: eureka-server
+  ports:
+  - port: 8761
+    nodePort: 30761
+    name: eureka-server

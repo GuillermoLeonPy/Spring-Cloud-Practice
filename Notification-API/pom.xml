@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>Notification-API</artifactId>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -17,7 +18,7 @@
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <docker.image.name>notification-api</docker.image.name>
-        <docker.image.version>1.0-snapshot</docker.image.version>
+        <docker.image.version>1.1-snapshot</docker.image.version>
     </properties>
     <dependencies>
         <dependency>
@@ -77,8 +78,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>${docker.image.name}</repository>
+                    <repository>guillermoleonpy/${docker.image.name}</repository>
                     <tag>${docker.image.version}</tag>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                 </configuration>
             </plugin>
         </plugins>

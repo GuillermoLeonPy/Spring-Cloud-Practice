@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-api
+  namespace: spring-cloud-microservices
+  labels:
+    app: payment-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-api
+  template:
+    metadata:
+      labels:
+        app: payment-api
+    spec:
+      containers:
+      - name: payment-api
+        image: guillermoleonpy/payment-api:1.1-snapshot
+        ports:
+        - containerPort: 8082
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: container-registry-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-api-svc
+  namespace: spring-cloud-microservices
+spec:
+  selector:
+    app: payment-api
+  ports:
+  - port: 8082

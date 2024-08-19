@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-api
+  namespace: spring-cloud-microservices
+  labels:
+    app: notification-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notification-api
+  template:
+    metadata:
+      labels:
+        app: notification-api
+    spec:
+      containers:
+      - name: notification-api
+        image: guillermoleonpy/notification-api:1.1-snapshot
+        ports:
+        - containerPort: 8081
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: container-registry-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-api-svc
+  namespace: spring-cloud-microservices
+spec:
+  selector:
+    app: notification-api
+  ports:
+  - port: 8081

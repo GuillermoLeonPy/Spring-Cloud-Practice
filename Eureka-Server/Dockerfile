@@ -2,8 +2,8 @@ FROM openjdk:18
 
 WORKDIR /app
 
-COPY ./target/Eureka-Server-1.0-SNAPSHOT.jar /app
+COPY ./target/Eureka-Server-1.1-SNAPSHOT.jar /app
 
-ENTRYPOINT ["java","-jar","Eureka-Server-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=kubernetes","-jar","Eureka-Server-1.1-SNAPSHOT.jar"]
 
 EXPOSE 8761

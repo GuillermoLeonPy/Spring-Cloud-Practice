@@ -2,8 +2,8 @@ FROM openjdk:18
 
 WORKDIR /app
 
-COPY ./target/Gateway-1.0-SNAPSHOT.jar /app
+COPY ./target/Gateway-1.1-SNAPSHOT.jar /app
 
-ENTRYPOINT ["java","-Dspring.profiles.active=docker","-jar","Gateway-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=kubernetes","-jar","Gateway-1.1-SNAPSHOT.jar"]
 
 EXPOSE 9090

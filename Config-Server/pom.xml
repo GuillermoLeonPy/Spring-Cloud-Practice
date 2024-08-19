@@ -66,9 +66,19 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
+                <executions>
+                    <execution>
+                        <id>docker-container-build-push</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <repository>${docker.image.name}</repository>
+                    <repository>guillermoleonpy/${docker.image.name}</repository>
                     <tag>${docker.image.version}</tag>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                 </configuration>
             </plugin>
         </plugins>

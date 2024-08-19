@@ -173,7 +173,7 @@
 					"response": []
 				},
 				{
-					"name": "ping payment-api",
+					"name": "ping notification-api",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -192,6 +192,120 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "kubernetes",
+			"item": [
+				{
+					"name": "minikube",
+					"item": [
+						{
+							"name": "ping notification-api",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://spring-cloud-practice.com/notification-api/notification/ping",
+									"protocol": "http",
+									"host": [
+										"spring-cloud-practice",
+										"com"
+									],
+									"path": [
+										"notification-api",
+										"notification",
+										"ping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "doPayment payment-api",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transactionId\":\"123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://spring-cloud-practice.com/payment-api/payment/doPayment",
+									"protocol": "http",
+									"host": [
+										"spring-cloud-practice",
+										"com"
+									],
+									"path": [
+										"payment-api",
+										"payment",
+										"doPayment"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "doPayment payment-api",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"transactionId\":\"123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://spring-cloud-practice.com/payment-api/payment/doPayment",
+											"protocol": "http",
+											"host": [
+												"spring-cloud-practice",
+												"com"
+											],
+											"path": [
+												"payment-api",
+												"payment",
+												"doPayment"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 19 Aug 2024 19:55:15 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"transactionId\": null,\n    \"paymentStatus\": \"PENDING\"\n}"
+								}
+							]
+						}
+					]
 				}
 			]
 		}
